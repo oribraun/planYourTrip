@@ -1,0 +1,75 @@
+.my-input-group {
+    position: relative;
+    .label {
+        transition: all .2s ease-in-out;
+        transition-delay: .06s;
+        color: #747576;
+        position: absolute;
+        font-size: 1.1em;
+        line-height: 1em;
+        left: .3em;
+        top: 18px;
+        top: 0.64em;
+        overflow: hidden;
+        i {
+            font-size: 10px;
+            line-height: 10px;
+        }
+    }
+    .input {
+        font-size: 1em;
+        line-height: 1em;
+        //line-height: 29px;
+        //height: 67px;
+        //padding: 17px 12px 6px;
+        height: auto;
+        padding: .7em .3em;
+        width:100%;
+        outline: none;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .select-input {
+        padding: .721em .3em;
+    }
+    //.input:focus + .label {
+    //    top: 0.1em;
+    //    font-size: .7em;
+    //}
+    &:focus-within {
+        .label {
+            top: 0.1em;
+            font-size: .7em;
+        }
+    }
+
+    .list {
+        font-style: normal;
+        z-index: 999;
+        box-shadow: rgb(111, 111, 111) 0px 0px 4px;
+        color: rgb(0, 0, 0);
+        border-radius: 2px;
+        background: rgb(255, 255, 255);
+        padding: 0px;
+        max-height: 300px;
+        overflow: auto;
+        .list-item {
+            border: none;
+            padding: 0.5em;
+            background: rgb(255, 255, 255);
+        }
+    }
+}
+.my-input-group.full {
+    .label {
+        top: 0.1em;
+        font-size: .7em;
+    }
+    .input {
+        padding: 1em 0.3em 0.4em;
+    }
+}

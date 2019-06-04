@@ -1,0 +1,10 @@
+<div>
+  <app-auto-complete [list]="_countries" (myNgModelChange)="onCountryChange()" [(myNgModel)]="_currentCountry" [prefix]="" [itemKey]="'name'" [placeholder]="'Countries'" [inputName]="'countries'" class="input" [onNgClass]="{'empty': !_currentCountry}"></app-auto-complete>
+</div>
+<div>
+  <app-auto-complete *ngIf="_cities[_currentCountry.key]" [list]="_cities[_currentCountry.key]" [(myNgModel)]="_currentCity" [prefix]="" [placeholder]="'Cities'" [inputName]="'cities'" class="input" [onNgClass]="{'empty': !_currentCity}"></app-auto-complete>
+</div>
+
+<div class="address" *ngIf="_currentCountry && _currentCountry.name">
+  {{_currentCountry.name}}, {{_currentCity}}
+</div>
