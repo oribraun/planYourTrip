@@ -1,8 +1,26 @@
 <div class="my-input-group" [ngClass]="{'full': value}">
-  <label class="label" for=""> {{placeholder}}</label>
-  <input #inputElement type="text" class="input {{class}}" name="{{inputName}}" [(ngModel)]="value" (ngModelChange)="fetchListId(value)" required [ngClass]="onNgClass">
+<!--  <div>form.submitted {{form.submitted}}</div>-->
+<!--  <div *ngIf="form.submitted && (myControl.invalid)" class="alert alert-danger">-->
+<!--    <div *ngIf="(myControl.errors && myControl.errors.required)">-->
+<!--      {{options.placeholder}} is required.-->
+<!--    </div>-->
+<!--  </div>-->
+  <label class="label" for=""> {{options.placeholder}}</label>
+  <input #inputElement type="text"
+         class="input {{options.inputClass}}"
+         name="{{options.inputName}}"
+         #myControl="ngModel"
+         [(ngModel)]="value"
+         (ngModelChange)="fetchListId(value)"
+         [attr.required]="options.required"
+         [required]="options.required"
+         [class.error]="form && form.submitted && myControl.invalid && myControl.errors && myControl.errors.required"
+         [ngClass]="onNgClass">
   <!--<div #list id="{{listName}}" [hidden]="(list | filter: listFilter(value)).length <= 0">-->
-  <div class="list" #listElement id="{{inputName}}_list">
-    <div class="list-item" *ngFor="let item of listFilter(list)" (click)="value = currentPrefix + (itemKey ? item[itemKey] : item); fetchListId(currentPrefix + (itemKey ? item[itemKey] : item))">{{currentPrefix + (itemKey ? item[itemKey] : item)}}</div>
+  <div class="list" #listElement id="{{options.inputName}}_list">
+    <div class="list-item" *ngFor="let item of listFilter(options.list)"
+         (click)="value = (options.prefix.trim() ? options.prefix.trim() + ' ' : '') + (options.itemKey ? item[options.itemKey] : item);
+         fetchListId((options.prefix ? options.prefix.trim() + ' ' : '') + (options.itemKey ? item[options.itemKey] : item))">{{(options.prefix ? options.prefix.trim() + ' ' : '') + (options.itemKey ? item[options.itemKey] : item)}}
+    </div>
   </div>
 </div>

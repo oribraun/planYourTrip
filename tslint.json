@@ -17,7 +17,7 @@
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [
-      true,
+      false,
       140
     ],
     "member-access": false,
@@ -32,6 +32,7 @@
         ]
       }
     ],
+    "arrow-return-shorthand": false,
     "no-consecutive-blank-lines": false,
     "no-console": [
       true,

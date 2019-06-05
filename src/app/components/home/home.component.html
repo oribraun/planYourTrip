@@ -1,10 +1,27 @@
-<div>
-  <app-auto-complete [list]="_countries" (myNgModelChange)="onCountryChange()" [(myNgModel)]="_currentCountry" [prefix]="" [itemKey]="'name'" [placeholder]="'Countries'" [inputName]="'countries'" class="input" [onNgClass]="{'empty': !_currentCountry}"></app-auto-complete>
-</div>
-<div>
-  <app-auto-complete *ngIf="_cities[_currentCountry.key]" [list]="_cities[_currentCountry.key]" [(myNgModel)]="_currentCity" [prefix]="" [placeholder]="'Cities'" [inputName]="'cities'" class="input" [onNgClass]="{'empty': !_currentCity}"></app-auto-complete>
-</div>
-
+<form action="" (ngSubmit)="ngForm.submitted && ngForm.valid && submit(ngForm)" #ngForm="ngForm" novalidate>
+<!--    <div>ngForm.valid {{ngForm.valid}}</div>-->
+<!--    <div>ngForm.submitted {{ngForm.submitted}}</div>-->
+<!--    <div *ngIf="ngForm.submitted && (ngForm.form.get('countries') && ngForm.form.get('countries').invalid)" class="alert alert-danger">-->
+<!--        <div *ngIf="(ngForm.form.get('countries').errors && ngForm.form.get('countries').errors.required)">-->
+<!--            countries is required.-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div *ngIf="ngForm.submitted && (ngForm.form.get('cities') && ngForm.form.get('cities').invalid)" class="alert alert-danger">-->
+<!--        <div *ngIf="(ngForm.form.get('cities').errors && ngForm.form.get('cities').errors.required)">-->
+<!--            cities is required.-->
+<!--        </div>-->
+<!--    </div>-->
+    <div>
+        <app-auto-complete [form]="ngForm" [options]="_countryOptions" (myNgModelChange)="onCountryChange()" [(myNgModel)]="_currentCountry" class="input" [onNgClass]="{'empty': !this._currentCountry}"></app-auto-complete>
+    </div>
+    <div>
+<!--        <app-auto-complete *ngIf="_cities[_currentCountry.key]" [list]="_cities[_currentCountry.key]" [(myNgModel)]="_currentCity" [prefix]="" [placeholder]="'Cities'" [inputName]="'cities'" class="input" [onNgClass]="{'empty': !_currentCity}"></app-auto-complete>-->
+        <app-auto-complete *ngIf="_cities[_currentCountry.key]" [form]="ngForm" [options]="_citiesOptions" [(myNgModel)]="_currentCity" class="input" [onNgClass]="{'empty': !_currentCity}"></app-auto-complete>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
 <div class="address" *ngIf="_currentCountry && _currentCountry.name">
-  {{_currentCountry.name}}, {{_currentCity}}
+    {{_currentCountry.name}}, {{_currentCity}}
 </div>
