@@ -88,16 +88,18 @@ export class AutoCompleteComponent implements OnInit, AfterViewInit, OnChanges {
         let keyboardInput = false;
         let currentSelectedItem = 0;
         input.on('click', (e) => {
-            setListCss();
-            if (isScrolledIntoView(input[0])) {
-                list.css('top', inputOffset.top - scrollTop + inputHeight);
-            } else {
-                list.css('top', inputOffset.top - scrollTop - list.height());
+            if (list.children().length) {
+                setListCss();
+                if (isScrolledIntoView(input[0])) {
+                    list.css('top', inputOffset.top - scrollTop + inputHeight);
+                } else {
+                    list.css('top', inputOffset.top - scrollTop - list.height());
+                }
+                list.show();
+                currentSelectedItem = 0;
+                list.find('div').css('background', '#fff');
+                e.preventDefault();
             }
-            list.show();
-            currentSelectedItem = 0;
-            list.find('div').css('background', '#fff');
-            e.preventDefault();
         });
         list.on('click', () => {
             list.hide();
