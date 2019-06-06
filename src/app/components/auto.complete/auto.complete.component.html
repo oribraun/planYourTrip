@@ -1,10 +1,12 @@
 <div class="my-input-group" [ngClass]="{'full': value}">
 <!--  <div>form.submitted {{form.submitted}}</div>-->
-<!--  <div *ngIf="form.submitted && (myControl.invalid)" class="alert alert-danger">-->
-<!--    <div *ngIf="(myControl.errors && myControl.errors.required)">-->
-<!--      {{options.placeholder}} is required.-->
+<!--  <ng-container *ngIf="form.submitted">-->
+<!--    <div *ngIf="(myControl.invalid)" class="alert alert-danger">-->
+<!--      <div *ngIf="(myControl.errors && myControl.errors.required)">-->
+<!--        {{options.placeholder}} is required.-->
+<!--      </div>-->
 <!--    </div>-->
-<!--  </div>-->
+<!--  </ng-container>-->
   <label class="label" for=""> {{options.placeholder}}</label>
   <input #inputElement type="text"
          class="input {{options.inputClass}}"

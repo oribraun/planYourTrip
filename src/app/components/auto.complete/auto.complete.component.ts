@@ -48,7 +48,7 @@ export class AutoCompleteComponent implements OnInit, AfterViewInit, OnChanges {
         if (!changes.myNgModel || !changes.myNgModel.currentValue) {
             this.value = '';
         }
-        console.log('changes', changes);
+        console.log('changes.form', changes.form);
         // if (changes.options) {
         //     this.options = changes.options.currentValue;
         // }
@@ -251,7 +251,6 @@ export class AutoCompleteComponent implements OnInit, AfterViewInit, OnChanges {
             item = '';
         }
         const map = this.options.list.map((o) => { return ((this.options.prefix ? this.options.prefix.trim() + ' ' : '') + (this.options.itemKey ? o[this.options.itemKey] : o)).toLowerCase(); } );
-        console.log('map', map)
         const index = map.indexOf(item.toLowerCase());
         if (index > -1) {
             this.myNgModel = this.options.list[index];
@@ -266,13 +265,13 @@ export class AutoCompleteComponent implements OnInit, AfterViewInit, OnChanges {
     ngOnInit() {
         if (this.form) {
             this.form.addControl(this.myControl);
-            if (this.options.required) {
+            // if (this.options.required) {
                 // if (this.onNgClass) {
                 //     this.onNgClass = {error: form.submitted && myControl.invalid && myControl.errors && myControl.errors.required};
                 // } else {
                 //     this.onNgClass = {'error': this.form.submitted && this.myControl.invalid && this.myControl.errors && this.myControl.errors.required};
                 // }
-            }
+            // }
         }
         // console.log('this.options.inputName', this.options.inputName);
         // console.log('this.form', this.form);
